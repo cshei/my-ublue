@@ -65,8 +65,18 @@ rpm:
     # Example:
     # - tilix
     - btop
+    - cascadia-fonts-all
+    - clang
+    - clang-devel
+    - cmake
+    - gparted
+    - hyperfine
+    - igt-gpu-tools
+    - jetbrains-mono-fonts-all
+    - mercurial
     - mosh
     - ripgrep
+    - strace
     - zsh
 
   # These RPMs will be removed from the system image. This step happens during
