@@ -70,15 +70,21 @@ rpm:
     - clang
     - clang-devel
     - cmake
+    - gcc
+    - gcc-c++
+    - golang
     - gparted
     - hyperfine
     - igt-gpu-tools
     - jetbrains-mono-fonts-all
+    - lldb
     - mercurial
     - mosh
     - ripgrep
+    - sshfs
     - strace
     - tailscale
+    - yt-dlp
     - zsh
 
   # These RPMs will be removed from the system image. This step happens during
