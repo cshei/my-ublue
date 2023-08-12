@@ -81,6 +81,7 @@ rpm:
     - hyperfine
     - igt-gpu-tools
     - jetbrains-mono-fonts-all
+    - libvirt
     - lldb
     - mercurial
     - mosh
@@ -88,6 +89,7 @@ rpm:
     - sshfs
     - strace
     - tailscale
+    - virt-manager
     - yt-dlp
     - zsh
 
