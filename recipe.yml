@@ -72,6 +72,11 @@ rpm:
     - cascadia-fonts-all
     - clang
     - clang-devel
+    - clevis
+    - clevis-dracut
+    - clevis-luks
+    - clevis-systemd
+    - clevis-udisks2
     - cmake
     - code
     - gcc
