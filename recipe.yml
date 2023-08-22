@@ -78,6 +78,11 @@ rpm:
     - clevis-systemd
     - clevis-udisks2
     - cmake
+    - cockpit
+    - cockpit-machines
+    - cockpit-ostree
+    - cockpit-podman
+    - cockpit-system
     - code
     - gcc
     - gcc-c++
