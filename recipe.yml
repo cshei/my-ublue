@@ -92,6 +92,7 @@ rpm:
     - hyperfine
     - igt-gpu-tools
     - jetbrains-mono-fonts-all
+    - kitty
     - libvirt
     - lldb
     - mercurial
