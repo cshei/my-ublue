@@ -96,9 +96,11 @@ rpm:
     - kitty
     - libvirt
     - lldb
+    - meld
     - mercurial
     - mold
     - mosh
+    - mpv
     - ripgrep
     - sshfs
     - strace
