@@ -26,6 +26,7 @@ modules:
       # - micro
       # - starship
       - binutils
+      - borgbackup
       - btop
       - cascadia-fonts-all
       - clang
