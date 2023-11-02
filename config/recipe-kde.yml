@@ -55,6 +55,7 @@ modules:
       - mold
       - mosh
       - mpv
+      - python3-devel
       - ripgrep
       - sshfs
       - strace
