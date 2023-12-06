@@ -42,6 +42,7 @@ jobs:
           - recipe.yml
           - recipe-kde.yml
           - recipe-kde-nvidia.yml
+          - recipe-bazzite-ally.yml
 # !!!
 
     steps:
