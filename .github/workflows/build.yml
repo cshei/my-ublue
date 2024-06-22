@@ -27,6 +27,10 @@ jobs:
           - recipe-kde-nvidia.yml
           - recipe-bazzite-deck.yml
     steps:
+      # https://github.com/orgs/community/discussions/25678
+      - name: Delete huge unnecessary tools folder
+        run: rm -rf /opt/hostedtoolcache
+
        # the build is fully handled by the reusable github action
       - name: Build Custom Image
         uses: blue-build/github-action@v1.6
