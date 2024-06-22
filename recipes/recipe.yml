@@ -1,10 +1,10 @@
 # image will be published to ghcr.io/<user>/<name>
-name: my-ublue-bazzite-deck
+name: my-ublue
 # description will be included in the image's metadata
 description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite-deck
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -44,7 +44,6 @@ modules:
       - gcc-c++
       - golang
       - gparted
-      - htop
       - hyperfine
       - igt-gpu-tools
       - jetbrains-mono-fonts-all
@@ -67,6 +66,8 @@ modules:
       - zsh
 
     remove:
+      - firefox # default firefox removed in favor of flatpak
+      - firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
   - type: default-flatpaks
     notify: true   # Send notification after install/uninstall is finished (true/false)
@@ -98,5 +99,5 @@ modules:
       - install-ms-fonts.sh
       - install-vscode.sh
       # - install-wezterm.sh
-      # this sets up the proper policy & signing files for signed images to work
-      - signing.sh
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
