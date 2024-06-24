@@ -9,4 +9,4 @@ set -oue pipefail
 mkdir -p /var/opt
 rpm-ostree install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 mv /var/opt/google /usr/lib/google
-echo 'L /opt/google - - - - ../../usr/lib/google' > /usr/lib/tmpfiles.d/google.conf
+echo 'L+ /opt/google - - - - ../../usr/lib/google' > /usr/lib/tmpfiles.d/google.conf
