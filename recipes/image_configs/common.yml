@@ -55,7 +55,6 @@ modules:
       - wezterm
       - yt-dlp
       - zsh
-      - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 
     remove:
 
@@ -89,5 +88,6 @@ modules:
       - install-ms-fonts.sh
       - install-vscode.sh
       # - install-wezterm.sh
+      - install-chrome.sh
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
