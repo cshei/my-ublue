@@ -53,7 +53,7 @@ modules:
       - strace
       - tailscale
       - virt-manager
-      # - wezterm
+      - wezterm
       - yt-dlp
       - zsh
 
