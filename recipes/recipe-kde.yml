@@ -12,3 +12,4 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
   # - from-file: image_configs/remove-firefox.yml
   - from-file: image_configs/common.yml
+  - from-file: image_configs/install-ghostty.yml
