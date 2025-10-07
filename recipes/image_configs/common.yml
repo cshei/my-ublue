@@ -12,6 +12,10 @@ modules:
   #                 # configuration you wish to end up in /etc/ on the booted system
   #                 # should be added into /usr/etc/ as that is the proper "distro"
   #                 # config directory on ostree. Read more in the files module's README
+  - type: script
+    scripts:
+      # From https://github.com/rrenomeron/ublue-tr/blob/5503da8d5c7db4cf349ea15ca023c3220d4f94e3/config/scripts/enable-chrome-yum-repo.sh
+      - enable-chrome-yum-repo.sh
 
   - type: rpm-ostree
     repos:
@@ -36,6 +40,7 @@ modules:
       - gcc
       - gcc-c++
       - golang
+      - google-chrome-stable
       - gparted
       - hyperfine
       - igt-gpu-tools
@@ -95,6 +100,6 @@ modules:
       - install-ms-fonts.sh
       - install-vscode.sh
       # - install-wezterm.sh
-      - install-chrome.sh
+      # - install-chrome.sh
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
