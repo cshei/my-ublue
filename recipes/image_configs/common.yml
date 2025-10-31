@@ -97,7 +97,7 @@ modules:
       # - install-vtune.sh
       - fix-symlinks.sh
       - install-chezmoi.sh
-      - install-ms-fonts.sh
+      # - install-ms-fonts.sh
       - install-vscode.sh
       # - install-wezterm.sh
       # - install-chrome.sh
