@@ -1,43 +1,56 @@
-# BlueBuild Template &nbsp; [![bluebuild](https://github.com/cshei/my-ublue/actions/workflows/build.yml/badge.svg)](https://github.com/cshei/my-ublue/actions/workflows/build.yml)
+# my-ublue &nbsp; [![bluebuild](https://github.com/cshei/my-ublue/actions/workflows/build.yml/badge.svg)](https://github.com/cshei/my-ublue/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+Custom [Universal Blue](https://universal-blue.org/) OS images built daily with [BlueBuild](https://blue-build.org/).
 
-After setup, it is recommended you update this README to describe your custom image.
+## Image Variants
+
+| Image | Base Image | Recipe | Notes |
+| :--- | :--- | :--- | :--- |
+| `ghcr.io/cshei/my-ublue:latest` | `ghcr.io/ublue-os/silverblue-main:latest` | `recipes/recipe.yml` | GNOME desktop |
+| `ghcr.io/cshei/my-ublue-kde:latest` | `ghcr.io/ublue-os/kinoite-main:latest` | `recipes/recipe-kde.yml` | KDE Plasma desktop |
+| `ghcr.io/cshei/my-ublue-bazzite-deck:latest` | `ghcr.io/ublue-os/bazzite-deck:latest` | `recipes/recipe-bazzite-deck.yml` | Bazzite Deck gaming image |
+| `ghcr.io/cshei/my-ublue-kde-nvidia:latest` | `ghcr.io/ublue-os/kinoite-nvidia:latest` | `recipes/recipe-kde-nvidia.yml` | Frozen on Fedora 44 (upstream `kinoite-nvidia` retired) |
 
 ## Installation
 
-> **Warning**  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
+To switch an existing Fedora Atomic / Universal Blue installation to one of these images (replace `my-ublue` with your preferred variant):
 
-To rebase an existing atomic Fedora installation to the latest build:
+### Using `bootc` (Fedora 41+ / Bazzite)
 
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/blue-build/template:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/blue-build/template:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
+1. Switch to the unsigned image first to install the signing keys and policies:
+   ```bash
+   sudo bootc switch ghcr.io/cshei/my-ublue:latest
+   sudo systemctl reboot
+   ```
+2. Switch to the enforced signed image:
+   ```bash
+   sudo bootc switch --enforce-container-sigpolicy ghcr.io/cshei/my-ublue:latest
+   sudo systemctl reboot
+   ```
 
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
+### Using `rpm-ostree`
+
+1. Rebase to the unsigned image first to install the signing keys and policies:
+   ```bash
+   rpm-ostree rebase ostree-unverified-registry:ghcr.io/cshei/my-ublue:latest
+   systemctl reboot
+   ```
+2. Rebase to the signed image:
+   ```bash
+   rpm-ostree rebase ostree-image-signed:docker://ghcr.io/cshei/my-ublue:latest
+   systemctl reboot
+   ```
+
+All recipes track `image-version: latest` from upstream Universal Blue, so `:latest` automatically follows new Fedora major releases when upstream promotes them.
 
 ## ISO
 
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
+You can generate an offline installation ISO using the [BlueBuild ISO instructions](https://blue-build.org/how-to/generate-iso/).
 
 ## Verification
 
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading `cosign.pub` from this repository and running:
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/blue-build/template
+cosign verify --key cosign.pub ghcr.io/cshei/my-ublue:latest
 ```
