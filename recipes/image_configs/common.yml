@@ -1,19 +1,17 @@
+---
 # yaml-language-server: $schema=https://schema.blue-build.org/module-stage-list-v1.json
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  # - type: files
-  #   files:
-  #     - usr: /usr # copy static configurations
-  #                 #
-  #                 # copies config/files/usr into your image's /usr
-  #                 #
-  #                 # configuration you wish to end up in /etc/ on the booted system
-  #                 # should be added into /usr/etc/ as that is the proper "distro"
-  #                 # config directory on ostree. Read more in the files module's README
+  - type: files
+    files:
+      - source: system
+        destination: /
+
   - type: dnf
     repos:
+      cleanup: true
       files:
         - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
         - google-chrome.repo
@@ -98,14 +96,9 @@ modules:
           url: https://dl.flathub.org/repo/flathub.flatpakrepo
           name: flathub
 
-  - type: script
-    scripts:
-      # - install-vtune.sh
-      - fix-symlinks.sh
-      # - install-chezmoi.sh
-      # - install-ms-fonts.sh
-      # - install-vscode.sh
-      # - install-wezterm.sh
-      # - install-chrome.sh
+  # - type: script
+  #   scripts:
+  #     - install-vtune.sh
+  #     - install-ms-fonts.sh
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
