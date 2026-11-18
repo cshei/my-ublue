@@ -12,59 +12,65 @@ modules:
   #                 # configuration you wish to end up in /etc/ on the booted system
   #                 # should be added into /usr/etc/ as that is the proper "distro"
   #                 # config directory on ostree. Read more in the files module's README
-  - type: script
-    scripts:
-      # From https://github.com/rrenomeron/ublue-tr/blob/5503da8d5c7db4cf349ea15ca023c3220d4f94e3/config/scripts/enable-chrome-yum-repo.sh
-      - enable-chrome-yum-repo.sh
-
-  - type: rpm-ostree
+  - type: dnf
     repos:
-      # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
-      - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-      - https://copr.fedorainfracloud.org/coprs/wezfurlong/wezterm-nightly/repo/fedora-%OS_VERSION%/wezfurlong-wezterm-nightly-fedora-%OS_VERSION%.repo
+      files:
+        - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+        - google-chrome.repo
+        - vscode.repo
+      copr:
+        # - atim/starship
+        - wezfurlong/wezterm-nightly
+      keys:
+        - https://dl.google.com/linux/linux_signing_key.pub
+        - https://packages.microsoft.com/keys/microsoft.asc
     install:
-      # - micro
-      # - starship
-      - binutils
-      - borgbackup
-      - btop
-      - cascadia-fonts-all
-      - clang
-      - clang-devel
-      - cmake
-      - cockpit
-      - cockpit-machines
-      - cockpit-ostree
-      - cockpit-podman
-      - cockpit-system
-      - gcc
-      - gcc-c++
-      - golang
-      - google-chrome-stable
-      - gparted
-      - hyperfine
-      - igt-gpu-tools
-      - jetbrains-mono-fonts-all
-      - kitty
-      - libvirt
-      - lldb
-      - meld
-      - mercurial
-      - mold
-      - mosh
-      - mpv
-      - python3-devel
-      - rclone
-      - ripgrep
-      - sshfs
-      - strace
-      - tailscale
-      - virt-manager
-      - wezterm
-      - yt-dlp
-      - zsh
+      packages:
+        # - micro
+        # - starship
+        - binutils
+        - borgbackup
+        - btop
+        - cascadia-fonts-all
+        - chezmoi
+        - clang
+        - clang-devel
+        - cmake
+        - cockpit
+        - cockpit-machines
+        - cockpit-ostree
+        - cockpit-podman
+        - cockpit-system
+        - code
+        - gcc
+        - gcc-c++
+        - golang
+        - google-chrome-stable
+        - gparted
+        - hyperfine
+        - igt-gpu-tools
+        - jetbrains-mono-fonts-all
+        - kitty
+        - libvirt
+        - lldb
+        - meld
+        - mercurial
+        - mold
+        - mosh
+        - mpv
+        - python3-devel
+        - rclone
+        - ripgrep
+        - sshfs
+        - strace
+        - tailscale
+        - virt-manager
+        - wezterm
+        - yt-dlp
+        - zsh
 
     # remove:
+    #   packages:
 
   - type: default-flatpaks
     configurations:
@@ -96,9 +102,9 @@ modules:
     scripts:
       # - install-vtune.sh
       - fix-symlinks.sh
-      - install-chezmoi.sh
+      # - install-chezmoi.sh
       # - install-ms-fonts.sh
-      - install-vscode.sh
+      # - install-vscode.sh
       # - install-wezterm.sh
       # - install-chrome.sh
 

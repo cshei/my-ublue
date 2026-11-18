@@ -1,5 +1,7 @@
-type: rpm-ostree
+type: dnf
 repos:
-  - https://copr.fedorainfracloud.org/coprs/scottames/ghostty/repo/fedora-%OS_VERSION%/scottames-ghostty-fedora-%OS_VERSION%.repo
+  copr:
+    - scottames/ghostty
 install:
-  - ghostty
+  packages:
+    - ghostty
