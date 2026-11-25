@@ -15,3 +15,4 @@ modules:
   # - from-file: image_configs/remove-firefox.yml
   - from-file: image_configs/common.yml
   - from-file: image_configs/install-ghostty.yml
+  - from-file: image_configs/install-gnome-tweaks.yml
